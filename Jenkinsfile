@@ -6,7 +6,7 @@ pipeline {
             steps {
 		checkout scmGit(branches: [[name: '*/main']],
 		extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'Folder4']]], 
-                            [$class: 'PathRestriction', excludedRegions: '', includedRegions: '''/Folder4/.*''']], 
+                            [$class: 'PathRestriction', excludedRegions: '', includedRegions: '''Folder4/.*''']], 
 		userRemoteConfigs: [
 			     [url: 'https://github.com/TVDAnilov/PollingPartProject_in_Jenkins.git']])         }
         }
@@ -26,7 +26,7 @@ pipeline {
         stage('Тесты') {
             steps {
                 powershell 'Write-Host "Выполняются тесты..."'
-                // Добавьте команды для запуска тестов
+                // Добавьте команды для запуска тестов!
             }
         }
     }
