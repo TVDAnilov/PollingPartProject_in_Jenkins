@@ -9,7 +9,8 @@ Folder2/.*
 Folder3/.*
 Folder5/.*
 Folder6/.*''', includedRegions: 'Folder4/.*'], [$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'Folder4/']]]], userRemoteConfigs: [[url: 'https://github.com/TVDAnilov/PollingPartProject_in_Jenkins.git']])
-        }
+        	}
+	}
         stage('Приветствие') {
             steps {
                 powershell 'Write-Host "Привет, мир!"'
