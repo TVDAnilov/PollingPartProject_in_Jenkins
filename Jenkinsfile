@@ -26,7 +26,7 @@ pipeline {
                 // Добавьте команды для запуска тестов
             }
         }
-
+    }
         post('Сообщение после сборки') {
             success{
                 archiveArtifacts artifacts: '/**/*', followSymlinks: false
@@ -35,5 +35,5 @@ pipeline {
             }
         }
         
-    }
+    
 }
