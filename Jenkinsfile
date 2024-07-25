@@ -24,7 +24,7 @@ Folder6/.*''', includedRegions: 'Folder4/.*']], userRemoteConfigs: [[url: 'https
 
         stage('Тесты') {
             steps {
-                powershell 'Write-Host "Выполняются тесты..."'
+                powershell 'Write-Host "Выполняются тесты...!"'
                 // Добавьте команды для запуска тестов!
             }
         }
