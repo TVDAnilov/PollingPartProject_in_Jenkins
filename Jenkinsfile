@@ -8,7 +8,7 @@ pipeline {
 		branches: [[name: '*/main']], 
 		extensions: [
 			[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: '/Folder4/Folder_in_folder4_4/']]], 
-			[$class: 'PathRestriction', excludedRegions: '', includedRegions: '/Folder4/Folder_in_folder4_4/']], 
+			[$class: 'PathRestriction', excludedRegions: '', includedRegions: '/Folder4/Folder_in_folder4_4/.*']], 
 		userRemoteConfigs: [
 			[url: 'https://github.com/TVDAnilov/PollingPartProject_in_Jenkins.git']])
             }
