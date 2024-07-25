@@ -4,10 +4,7 @@ pipeline {
     stages {
         stage('Загрузка изменений из Git') {
             steps {
-checkout scmGit(
-branches: [[name: '*/main']], extensions:
-	 [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: '/Folder4/Folder_in_folder4_4/']]]]
-userRemoteConfigs: [[url: 'https://github.com/TVDAnilov/PollingPartProject_in_Jenkins.git']])
+checkout scmGit(branches: [[name: '*/main']], extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'Folder4']]]], userRemoteConfigs: [[url: 'https://github.com/TVDAnilov/PollingPartProject_in_Jenkins.git']])
             }
         }
         stage('Приветствие') {
