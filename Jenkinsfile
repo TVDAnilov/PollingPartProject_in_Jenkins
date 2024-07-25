@@ -6,7 +6,7 @@ pipeline {
             steps {
 checkout scmGit(
 branches: [[name: '*/main']], extensions:
-	 [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: '/Folder4/Folder_in_folder4_4/']]]
+	 [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: '/Folder4/Folder_in_folder4_4/']]]]
 userRemoteConfigs: [[url: 'https://github.com/TVDAnilov/PollingPartProject_in_Jenkins.git']])
             }
         }
