@@ -15,7 +15,7 @@ Jenkinsfile''']], userRemoteConfigs: [[url: 'https://github.com/TVDAnilov/Pollin
 
         stage('Сборка') {
             steps {
-                powershell 'Write-Host "Выполняется сборка..."'
+                powershell 'Write-Host "Выполняется сборка...!"'
                 // Добавьте команды для сборки вашего проекта
             }
         }
