@@ -17,6 +17,7 @@ checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs:
                     }
                     // Если изменений нет, завершить пайплайн с ошибкой
                     if (!hasChanges) {
+			powershell 'Write-Host "No changes detected in any project directories. Exiting the pipeline"'
                         currentBuild.result = 'ABORTED'
                         error("No changes detected in any project directories. Exiting the pipeline.")
                     }
