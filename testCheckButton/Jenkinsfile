@@ -12,7 +12,8 @@ pipeline {
     }
 
     stages {
-	stage('Generate Node List') {
+	stages {
+        stage('Generate Node List') {
             steps {
                 script {
                     def nodeList = []
@@ -25,28 +26,12 @@ pipeline {
                 }
             }
         }
-        stage('Stop Service on All Nodes') {
-            when {
-                expression { return env.NODE_LIST != '' }
-            }
-            matrix {
-                axes {
-                    axis {
-                        name 'NODE'
-                        values "${env.NODE_LIST}".split(',')
-                    }
-                }
-                stages {
-                    stage('Stop Service') {
-                        agent { label NODE }
-                        steps {
-                            echo "Stopping service on ${NODE}"
-                            sh 'sudo systemctl stop your-service'
-                        }
-                    }
-                }
+        stage('Display Node List') {
+            steps {
+                echo "Nodes with label 'node': ${env.NODE_LIST}"
             }
         }
+    }
         stage('Step 1') {
             when {
                 expression { return params.RUN_STEP_1 }
