@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+
+    parameters {
+        booleanParam(name: 'RUN_STEP_1', defaultValue: true, description: 'Run Step 1')
+        booleanParam(name: 'RUN_STEP_2', defaultValue: true, description: 'Run Step 2')
+        booleanParam(name: 'RUN_STEP_3', defaultValue: true, description: 'Run Step 3')
+    }
+
+    stages {
+        stage('Step 1') {
+            when {
+                expression { return params.RUN_STEP_1 }
+            }
+            steps {
+                echo 'Running Step 1'
+                // Ваши команды для Step 1
+            }
+        }
+        stage('Step 2') {
+            when {
+                expression { return params.RUN_STEP_2 }
+            }
+            steps {
+                echo 'Running Step 2'
+                // Ваши команды для Step 2
+            }
+        }
+        stage('Step 3') {
+            when {
+                expression { return params.RUN_STEP_3 }
+            }
+            steps {
+                echo 'Running Step 3'
+                // Ваши команды для Step 3
+            }
+        }
+    }
+}
