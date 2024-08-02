@@ -12,27 +12,24 @@ pipeline {
     }
 
     stages {
-	stages {
-        	stage('Generate Node List') {
-            		steps {
-                		script {
-                    			def nodeList = []
-                    			Jenkins.instance.nodes.each { node ->
-                        			if (node.getAssignedLabels().contains('node')) {
-                            				nodeList.add(node.getNodeName())
-                        			}
-                    			}	
-				}
-                    		env.NODE_LIST = nodeList.join(',')
-                	}
-            	}
-
+	stage('Generate Node List') {
+            steps {
+                script {
+                    def nodeList = []
+                    Jenkins.instance.nodes.each { node ->
+                        if (node.getAssignedLabels().contains('node')) {
+                            nodeList.add(node.getNodeName())
+                        }
+                    }
+                    env.NODE_LIST = nodeList.join(',')
+                }
+            }
+        }
         stage('Display Node List') {
             steps {
                 echo "Nodes with label 'node': ${env.NODE_LIST}"
             }
         }
-    
         stage('Step 1') {
             when {
                 expression { return params.RUN_STEP_1 }
