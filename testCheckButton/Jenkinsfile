@@ -1,17 +1,17 @@
 pipeline {
     agent any
 	
-	environment {
-        	NODE_LIST = script {
-            		def nodeList = []
-            		Jenkins.instance.nodes.each { node ->
-                		if (node.getAssignedLabels().contains('node')) {
-                    			nodeList.add(node.getNodeName())
-                		}
-            		}
-            		return nodeList.join(',')
-		}
+    options {
+        script {
+            def nodeList = []
+            Jenkins.instance.nodes.each { node ->
+                if (node.getAssignedLabels().contains('node')) {
+                    nodeList.add(node.getNodeName())
+                }
+            }
+            env.NODE_LIST = nodeList.join(',')
         }
+    }
 
     parameters {
         booleanParam(name: 'RUN_STEP_1', defaultValue: false, description: 'Run Step 1')
