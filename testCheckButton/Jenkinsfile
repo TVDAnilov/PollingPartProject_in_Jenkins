@@ -1,17 +1,17 @@
 pipeline {
     agent any
 	
-	    environment {
-        NODE_LIST = script {
-            def nodeList = []
-            Jenkins.instance.nodes.each { node ->
-                if (node.getAssignedLabels().contains('my-label')) {
-                    nodeList.add(node.getNodeName())
-                }
-            }
-            return nodeList.join(',')
+	environment {
+        	NODE_LIST = script {
+            		def nodeList = []
+            		Jenkins.instance.nodes.each { node ->
+                		if (node.getAssignedLabels().contains('node')) {
+                    			nodeList.add(node.getNodeName())
+                		}
+            		}
+            		return nodeList.join(',')
+		}
         }
-    }
 
     parameters {
         booleanParam(name: 'RUN_STEP_1', defaultValue: false, description: 'Run Step 1')
@@ -20,7 +20,7 @@ pipeline {
     }
 
     stages {
-stage('Stop Service on All Nodes') {
+	stage('Stop Service on All Nodes') {
             matrix {
                 axes {
                     axis {
@@ -33,7 +33,7 @@ stage('Stop Service on All Nodes') {
                         agent { label NODE }
                         steps {
                             echo "Stopping service on ${NODE}"
-                            sh 'sudo systemctl stop your-service'
+                            //
                         }
                     }
                 }
