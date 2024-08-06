@@ -60,7 +60,7 @@ stage('Service Management') {
                         }
                     }
                 }
-        }
+   
 
     }
         post('Сообщение после сборки') {
