@@ -32,39 +32,41 @@ Folder1/.*''', includedRegions: 'Folder4/.*'], [$class: 'SparseCheckoutPaths', s
                 // Добавьте команды для запуска тестов!
             }
         }
-        stage('Stop Services') {
+stage('Service Management') {
             parallel {
-                stage('Stop Service on Computer 1') {
-    
+                stage('Service Tasks') {
                     steps {
-                        powershell '''
-                        Write-Output "Stopping service on Computer 1"
-                        # Команда для остановки службы на компьютере 1
-                        Stop-Service -Name 'ServiceName' -Force
-                        '''
+                        script {
+                            parallel(
+                                "Stop Service on Computer 1": {
+                                    node('agent1') {
+                                        powershell '''
+                                        Write-Output "Stopping service on Computer 1"
+                                        Stop-Service -Name 'ServiceName' -Force
+                                        '''
+                                    }
+                                },
+                                "Stop Service on Computer 2": {
+                                    node('agent2') {
+                                        powershell '''
+                                        Write-Output "Stopping service on Computer 2"
+                                        Stop-Service -Name 'ServiceName' -Force
+                                        '''
+                                    }
+                                },
+                                "Stop Service on Computer 3": {
+                                    node('agent3') {
+                                        powershell '''
+                                        Write-Output "Stopping service on Computer 3"
+                                        Stop-Service -Name 'ServiceName' -Force
+                                        '''
+                                    }
+                                }
+                                // Добавьте дополнительные этапы для других компьютеров
+                            )
+                        }
                     }
                 }
-                stage('Stop Service on Computer 2') {
-             
-                    steps {
-                        powershell '''
-                        Write-Output "Stopping service on Computer 2"
-                        # Команда для остановки службы на компьютере 2
-                        Stop-Service -Name 'ServiceName' -Force
-                        '''
-                    }
-                }
-                stage('Stop Service on Computer 3') {
-              
-                    steps {
-                        powershell '''
-                        Write-Output "Stopping service on Computer 3"
-                        # Команда для остановки службы на компьютере 3
-                        Stop-Service -Name 'ServiceName' -Force
-                        '''
-                    }
-                }
-                // Добавьте дополнительные этапы для других компьютеров
             }
         }
 
