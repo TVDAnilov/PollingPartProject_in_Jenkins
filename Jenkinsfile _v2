@@ -36,7 +36,7 @@ stages {
         stage('Stop Services') {
             parallel {
                 stage('Stop Service on Computer 1') {
-                    agent { label 'agent1' }
+    
                     steps {
                         powershell '''
                         Write-Output "Stopping service on Computer 1"
@@ -46,7 +46,7 @@ stages {
                     }
                 }
                 stage('Stop Service on Computer 2') {
-                    agent { label 'agent2' }
+             
                     steps {
                         powershell '''
                         Write-Output "Stopping service on Computer 2"
@@ -56,7 +56,7 @@ stages {
                     }
                 }
                 stage('Stop Service on Computer 3') {
-                    agent { label 'agent3' }
+              
                     steps {
                         powershell '''
                         Write-Output "Stopping service on Computer 3"
