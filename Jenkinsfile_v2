@@ -32,7 +32,7 @@ Folder1/.*''', includedRegions: 'Folder4/.*'], [$class: 'SparseCheckoutPaths', s
                 // Добавьте команды для запуска тестов!
             }
         }
-stage('Service Management') {
+	stage('Service Management') {
                 stage('Service Tasks') {
                     steps {
                         script {
@@ -59,9 +59,8 @@ stage('Service Management') {
                             )
                         }
                     }
-                }
-   
-
+            }    }
+   	}
     }
         post('Сообщение после сборки') {
             success{
