@@ -43,6 +43,7 @@ stage('Service Management') {
                                         powershell '''
                                         Write-Output "Stopping service on Computer 1"
                                         Stop-Service -Name 'ServiceName' -Force
+exit -1
                                         '''
                                 },
                                 "Stop Service on Computer 2": {
