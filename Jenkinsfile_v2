@@ -41,6 +41,7 @@ stage('Service Management') {
                                 "Stop Service on Computer 1": {
                                     node('agent1') {
                                         powershell '''
+					whoami
                                         Write-Output "Stopping service on agent1"
                                         Stop-Service -Name Spooler -Force
                                         '''
@@ -49,6 +50,7 @@ stage('Service Management') {
                                 "Stop Service on Computer 2": {
                                     node('agent2') {
                                         powershell '''
+					whoami
                                         Write-Output "Stopping service on agent2"
                                         Stop-Service -Name Spooler -Force
                                         '''
