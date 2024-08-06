@@ -32,7 +32,6 @@ Folder1/.*''', includedRegions: 'Folder4/.*'], [$class: 'SparseCheckoutPaths', s
                 // Добавьте команды для запуска тестов!
             }
         }
-stages {
         stage('Stop Services') {
             parallel {
                 stage('Stop Service on Computer 1') {
@@ -68,7 +67,7 @@ stages {
                 // Добавьте дополнительные этапы для других компьютеров
             }
         }
-    }
+
     }
         post('Сообщение после сборки') {
             success{
