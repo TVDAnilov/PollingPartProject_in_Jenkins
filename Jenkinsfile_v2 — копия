@@ -39,25 +39,28 @@ stage('Service Management') {
                         script {
                             parallel(
                                 "Stop Service on Computer 1": {
-
+                                    node('agent1') {
                                         powershell '''
                                         Write-Output "Stopping service on Computer 1"
                                         Stop-Service -Name 'ServiceName' -Force
                                         '''
+                                    }
                                 },
                                 "Stop Service on Computer 2": {
+                                    node('agent2') {
                                         powershell '''
                                         Write-Output "Stopping service on Computer 2"
                                         Stop-Service -Name 'ServiceName' -Force
                                         '''
+                                    }
                                 },
                                 "Stop Service on Computer 3": {
-   
+                                    node('agent3') {
                                         powershell '''
                                         Write-Output "Stopping service on Computer 3"
                                         Stop-Service -Name 'ServiceName' -Force
                                         '''
-   
+                                    }
                                 }
                                 // Добавьте дополнительные этапы для других компьютеров
                             )
