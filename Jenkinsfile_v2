@@ -33,13 +33,12 @@ Folder1/.*''', includedRegions: 'Folder4/.*'], [$class: 'SparseCheckoutPaths', s
             }
         }
 stage('Service Management') {
-            parallel {
                 stage('Service Tasks') {
                     steps {
                         script {
                             parallel(
                                 "Stop Service on Computer 1": {
-                                    node('tst') {
+                                    node('tst1') {
                                         powershell '''
 					whoami
                                         Write-Output "Stopping service on agent1"
@@ -47,21 +46,20 @@ stage('Service Management') {
                                         '''
                                     }
                                 },
-                                //"Stop Service on Computer 2": {
-                                    //node('tst2') {
-                                        //powershell '''
-					//whoami
-                                        //Write-Output "Stopping service on agent2"
-                                        //Stop-Service -Name Spooler -Force
-                                        //'''
-                                    //}
-                                //}
+                                "Stop Service on Computer 2": {
+                                    node('tst2') {
+                                        powershell '''
+					whoami
+                                        Write-Output "Stopping service on agent2"
+                                        Stop-Service -Name Spooler -Force
+                                        '''
+                                    }
+                                }
                                 // Добавьте дополнительные этапы для других компьютеров
                             )
                         }
                     }
                 }
-            }
         }
 
     }
