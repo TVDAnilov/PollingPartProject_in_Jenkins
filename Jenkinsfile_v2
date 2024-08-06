@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Service Management') {
             stages {
-                stage('Service Tasks') {
+                stage('') {
                     steps {
                         script {
                             parallel(
