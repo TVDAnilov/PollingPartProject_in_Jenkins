@@ -47,15 +47,15 @@ stage('Service Management') {
                                         '''
                                     }
                                 },
-                                "Stop Service on Computer 2": {
-                                    node('tst2') {
-                                        powershell '''
-					whoami
-                                        Write-Output "Stopping service on agent2"
-                                        Stop-Service -Name Spooler -Force
-                                        '''
-                                    }
-                                }
+                                //"Stop Service on Computer 2": {
+                                    //node('tst2') {
+                                        //powershell '''
+					//whoami
+                                        //Write-Output "Stopping service on agent2"
+                                        //Stop-Service -Name Spooler -Force
+                                        //'''
+                                    //}
+                                //}
                                 // Добавьте дополнительные этапы для других компьютеров
                             )
                         }
