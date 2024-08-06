@@ -39,7 +39,7 @@ stage('Service Management') {
                         script {
                             parallel(
                                 "Stop Service on Computer 1": {
-                                    node('tst1') {
+                                    node('tst') {
                                         powershell '''
 					whoami
                                         Write-Output "Stopping service on agent1"
