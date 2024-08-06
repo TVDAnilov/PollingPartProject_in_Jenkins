@@ -33,6 +33,7 @@ Folder1/.*''', includedRegions: 'Folder4/.*'], [$class: 'SparseCheckoutPaths', s
             }
         }
 	stage('Service Management') {
+            stages {
                 stage('Service Tasks') {
                     steps {
                         script {
@@ -40,26 +41,29 @@ Folder1/.*''', includedRegions: 'Folder4/.*'], [$class: 'SparseCheckoutPaths', s
                                 "Stop Service on Computer 1": {
                                     node('tst1') {
                                         powershell '''
-					whoami
-                                        Write-Output "Stopping service on agent1"
-                                        Stop-Service -Name Spooler -Force
+                                            whoami
+                                            Write-Output "Stopping service on agent1"
+                                            Stop-Service -Name Spooler -Force
                                         '''
                                     }
                                 },
                                 "Stop Service on Computer 2": {
                                     node('tst2') {
                                         powershell '''
-					whoami
-                                        Write-Output "Stopping service on agent2"
-                                        Stop-Service -Name Spooler -Force
+                                            whoami
+                                            Write-Output "Stopping service on agent2"
+                                            Stop-Service -Name Spooler -Force
                                         '''
                                     }
-                                }
+                                },
                                 // Добавьте дополнительные этапы для других компьютеров
+                               
                             )
                         }
                     }
-            }    }
+                }
+            }
+        }
    	}
     }
         post('Сообщение после сборки') {
