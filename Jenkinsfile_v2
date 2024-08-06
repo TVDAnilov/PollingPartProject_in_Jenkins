@@ -42,7 +42,7 @@ stage('Service Management') {
                                     node('agent1') {
                                         powershell '''
                                         Write-Output "Stopping service on agent1"
-                                        Stop-Service -Name 'Spooler' -Force
+                                        Stop-Service -Name Spooler -Force
                                         '''
                                     }
                                 },
@@ -50,7 +50,7 @@ stage('Service Management') {
                                     node('agent2') {
                                         powershell '''
                                         Write-Output "Stopping service on agent2"
-                                        Stop-Service -Name 'Spooler' -Force
+                                        Stop-Service -Name Spooler -Force
                                         '''
                                     }
                                 }
